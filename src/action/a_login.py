@@ -32,5 +32,4 @@ class Alogin(object):
         #检查登录跳转正确
         obj = src.object.o_tasklist
         element_user = driver.find_element_by_id(obj.DIV_USER_ID)
-        #assert str_title == obj.TEXT_USER_TITLE, "登录用户不是YL"
         checkpoint(element_user != None, "检查用户登录是否成功")

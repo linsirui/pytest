@@ -41,6 +41,7 @@ def __writetempresult(strline):
     tempresl.close()
 
 def initreport():
+    '''初始化测试报告'''
     status = "状态,"
     status = status.ljust(5)
     des = "描述,"
@@ -54,6 +55,7 @@ def initreport():
     __writetempresult(strtitle)
 
 def buidreport(reportname):
+    '''生成测试报告'''
     currentname = sys.path[-1] + "/reporter/temp.txt"
     newname = sys.path[-1] + "/reporter/" + reportname
     rename(currentname, newname)

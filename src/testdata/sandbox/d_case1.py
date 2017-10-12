@@ -1,3 +1,3 @@
-REQUEST_URL="http://101.37.243.167:8080/auth/login"
+REQUEST_URL="http://test.api.xltec.cc/auth/login"
 LOGINPOST_DATA ={"loginName": "scotest2", "password": "123ABC"}
-REQUEST_HEADER={"Content-Type": "application/json","Origin": "http://101.37.243.167:8086"}
+REQUEST_HEADER={"Content-Type": "application/json","Origin": "http://test.go.xltec.cc"}

@@ -10,7 +10,7 @@ def startrun(env, browser):
     caselist = []
     #caselist.append(namelist.CASE1)
     #caselist.append(namelist.CASE2)
-    caselist.append(namelist.CASE3)
+    caselist.append(namelist.CASE4)
     #-------------------------------------------------------
     
     Run(env, browser, caselist)

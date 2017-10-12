@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 #_*_ coding:utf-8 _*_
 
-from src.action.a_login import Alogin
-from src.action.a_logout import Alogout
-from selenium import webdriver
+
 import time
 import json
 from common import httprequest
+import os
 
 def run_step(test_env, browser):
     '''执行本case所有步骤, 每个case文件必须包含此函数'''
@@ -22,6 +21,9 @@ def run_step(test_env, browser):
     requestheader = tcfg_case.REQUEST_HEADER
     print("the json data is", postdata)
     httprequest.httppost(url,requestheader,postdata)
+    print("current dir is",os.getcwd())
+
+
 
     #browser.get("https://cn-sandbox.tradeshift.com/#/apps/Tradeshift.AppStore/apps/activated")
      #  time.sleep(4)

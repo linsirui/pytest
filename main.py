@@ -4,7 +4,7 @@ import time
 import sys
 from selenium import webdriver
 import common.reporter as reporter
-sys.path.append("/Users/jingchen/PyAutoUI/scf/pytest_interface")  # 项目地址
+sys.path.append("/Users/chenlisha/pyprojects/pytest")  # 项目地址
 
 #-----------执行时的配置信息---------------
 #配置被测环境, 值与testdata下的环境包名相同

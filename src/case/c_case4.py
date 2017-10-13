@@ -40,7 +40,7 @@ def run_step(test_env, browser):
     if(returncode =="200"):
         reporter.checkpoint(returncode == "200","用例通过")
     else:
-        reporter.checkpoint(returncode!="200","用例失败",returncode)
+        reporter.checkpoint(returncode!="200","用例失败" + "returncode:" + returncode)
     #result = json.loads(response)
     
 

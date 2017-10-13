@@ -1,0 +1,2 @@
+Status,   CaseName,           FileName,           LineNo.,  Description
+Pass,     c_case4,            c_case4.py,         line 41   用例通过,

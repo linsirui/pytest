@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''测试结果模块'''
-import sys
+import os
 from os import rename
 import inspect
 
@@ -16,6 +16,7 @@ def checkpoint(exp, des="None"):
         casename = casename[casename.rfind("/")+1:len(casename)-3]
     filename = filename[filename.rfind("/")+1:]
     line = liststack[1][2]
+    line = "line " + str(line)
     if exp:
         status = "Pass,"
     else:
@@ -23,39 +24,45 @@ def checkpoint(exp, des="None"):
     des = des + ","
     casename = casename + ","
     filename = filename + ","
-    if len(status) <= 5:
-        status = status.ljust(5)
-    if len(des) <= 40:
-        des = des.ljust(40)
+    if len(status) <= 10:
+        status = status.ljust(10)
     if len(casename) <= 20:
         casename = casename.ljust(20)
     if len(filename) <= 20:
         filename = filename.ljust(20)
-    strlog = status + des + casename + filename + "line " + str(line) + "\n"
+    if len(line) <= 10:
+        line = line.ljust(10)
+    strlog = status + casename + filename + line + des + "\n"
     __writetempresult(strlog)
 
 def __writetempresult(strline):
-    path = sys.path[-1] + "/reporter/temp.txt"
+    path = os.getcwd() + "/reporter/temp.txt"
     tempresl = open(path, "a", encoding="utf-8", newline="\n")
     tempresl.writelines(strline)
     tempresl.close()
 
+def __cleantempresult():
+    path = os.getcwd() + "/reporter/temp.txt"
+    tempresl = open(path, "w", encoding="utf-8", newline="\n")
+    tempresl.truncate()
+    tempresl.close()
+
 def initreport():
     '''初始化测试报告'''
-    status = "状态,"
-    status = status.ljust(5)
-    des = "描述,"
-    des = des.ljust(40)
-    casename = "用例名,"
+    status = "Status,"
+    status = status.ljust(10)
+    casename = "CaseName,"
     casename = casename.ljust(20)
-    filename = "文件名,"
+    filename = "FileName,"
     filename = filename.ljust(20)
-    strtitle = status + des + casename + filename + "行号\n"
-    #strtitle = "Status, Description, CaseName, FileName, Line"
+    line = "LineNo.,"
+    line = line.ljust(10)
+    strtitle = status + casename + filename + line + "Description\n"
+    __cleantempresult() #清空temp.txt中的内容
     __writetempresult(strtitle)
 
 def buidreport(reportname):
     '''生成测试报告'''
-    currentname = sys.path[-1] + "/reporter/temp.txt"
-    newname = sys.path[-1] + "/reporter/" + reportname
+    currentname = os.getcwd() + "/reporter/temp.txt"
+    newname = os.getcwd() + "/reporter/" + reportname
     rename(currentname, newname)
